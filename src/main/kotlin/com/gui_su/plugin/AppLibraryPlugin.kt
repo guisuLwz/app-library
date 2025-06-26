@@ -97,7 +97,12 @@ class AppLibraryPlugin: Plugin<Project> {
                                 id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
                             }
                             
-                            2.若需使用greendao自动更新版本插件，需在 app 的 build.gradle 中添加：
+                            2.若需使用 greendao 自动更新版本插件或者 navigation，需在 app 的 build.gradle 中添加：
+                            
+                            plugins {
+                                id 'org.greenrobot.greendao'
+                                id 'androidx.navigation.safeargs'
+                            }
                             
                             greendao {
                                 schemaVersion 1 // 指定数据库schema版本号，迁移等操作会用到
