@@ -77,7 +77,7 @@ class AppLibraryPlugin: Plugin<Project> {
                          readmeFile.writeText("""
                             欢迎使用 io.github.guisuLwz.app-library 插件！
                             本插件自动集成多个安卓依赖，包括GreenDAO、navigation、agp等等。                    
-                            若如需使用上述提到的插件，还请在根项目的 build.gradle 中添加：
+                            1.若如需使用上述提到的插件，还请在 project 的 build.gradle 中添加：
         
                             buildscript {
                                 ext.kotlin_version = "1.6.0"
@@ -97,7 +97,15 @@ class AppLibraryPlugin: Plugin<Project> {
                                 id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
                             }
                             
-                            需要在根目录的 settings.gradle 中替换：
+                            2.若需使用greendao自动更新版本插件，需在 app 的 build.gradle 中添加：
+                            
+                            greendao {
+                                schemaVersion 1 // 指定数据库schema版本号，迁移等操作会用到
+                                daoPackage 'com.example.xxx.greendao.dao' // dao的包名，包名默认是entity所在的包
+                                targetGenDir 'src/main/java' // 生成数据库文件的目录
+                            }
+                            
+                            3.需要在根目录的 settings.gradle 中替换：
                             
                             dependencyResolutionManagement {
                                 repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -108,7 +116,7 @@ class AppLibraryPlugin: Plugin<Project> {
                                 }
                             }
                             
-                            需要在根目录的 gradle.properties 中添加：
+                            4.需要在根目录的 gradle.properties 中添加：
                             
                             android.enableJetifier=true
                             
