@@ -9,6 +9,15 @@
 - Generates a `README.txt` file with detailed configuration instructions
 - Applies only to Android projects (requires the `com.android.base` plugin)
 
+## Included Libraries
+
+- androidx.appcompat:appcompat:1.4.1
+- com.squareup.retrofit2:retrofit:2.9.0
+- org.greenrobot:eventbus:3.3.1
+- com.github.bumptech.glide:glide:4.11.0
+- com.tencent:mmkv:1.2.13
+- For the full list, check the generated README.txt file
+
 ## Getting Started
 
 Add the plugin to your project:
