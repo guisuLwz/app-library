@@ -2,24 +2,77 @@ plugins {
     kotlin("jvm") version "2.1.20"
     id("java-gradle-plugin")
     id("maven-publish")
-    id("com.gradle.plugin-publish") version "1.2.1"
+    id("signing")
 }
 
-group = "io.github.guisuLwz"
+group = "io.github.guisulwz"
 version = "7.5.0"
 
-gradlePlugin {
-    website = "https://github.com/guisuLwz/app-library"
-    vcsUrl = "https://github.com/guisuLwz/app-library.git"
-    plugins {
-        create("appLibraryPlugin") {
-            id = "io.github.guisuLwz.app-library"
-            displayName = "appLibrary"
-            description = "This plugin automatically integrates multiple Android dependencies without the need for manual copying and adding."
-            tags = listOf("plugins", "android", "library", "gui_su", "guisu")
-            implementationClass = "com.gui_su.plugin.AppLibraryPlugin"
+publishing {
+    publications {
+        create<MavenPublication>("plugin") {
+            from(components["kotlin"])
+
+            afterEvaluate {
+                artifact(tasks["sourcesJar"])
+                artifact(tasks["javadocJar"])
+            }
+
+            group = "io.github.guisulwz"
+            artifactId = "app-library"
+            version = "7.5.0"
+
+            pom {
+                name.set("appLibraryPlugin")
+                description.set("This plugin automatically integrates multiple Android dependencies without the need for manual copying and adding.")
+                url.set("https://github.com/guisulwz/app-library")
+
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+
+                developers {
+                    developer {
+                        id.set("guisulwz")
+                        name.set("Li WeiZhong")
+                        email.set("2100588538@qq.com")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:git://github.com/guisulwz/app-library.git")
+                    developerConnection.set("scm:git:ssh://github.com:guisulwz/app-library.git")
+                    url.set("https://github.com/guisulwz/app-library")
+                }
+            }
         }
     }
+
+    repositories {
+        maven {
+            // 发布文件会在build/myPublish目录生成
+            url = layout.buildDirectory.dir("myPublish").get().asFile.toURI()
+            mavenLocal()
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications["plugin"])
+}
+
+tasks.register<Jar>("sourcesJar") {
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
+}
+
+tasks.register<Jar>("javadocJar") {
+    archiveClassifier.set("javadoc")
+    from(tasks.named("javadoc"))
 }
 
 repositories {
