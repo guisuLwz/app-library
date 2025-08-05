@@ -20,7 +20,7 @@ publishing {
 
             group = "io.github.guisulwz"
             artifactId = "app-library"
-            version = "7.5.2"
+            version = "1.0.2-750"
 
             pom {
                 name.set("appLibraryPlugin")
