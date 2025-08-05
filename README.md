@@ -24,7 +24,7 @@ Add the plugin to your project:
 
 ```kotlin
 plugins {
-    id("io.github.guisuLwz.app-library") version "7.5.0"
+    id("io.github.guisulwz.app-library") version "7.5.2"
 }
 ```
 

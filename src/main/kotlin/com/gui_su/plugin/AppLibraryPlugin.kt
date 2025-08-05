@@ -102,7 +102,7 @@ class AppLibraryPlugin : Plugin<Project> {
         if (!readmeFile.exists()) {
             readmeFile.writeText(
                 """
-                            欢迎使用 io.github.guisuLwz.app-library 插件！
+                            欢迎使用 io.github.guisulwz.app-library 插件！
                             本插件自动集成多个安卓依赖，包括GreenDAO、navigation、agp等等。                    
                             1.若如需使用上述提到的插件，还请在 project 的 build.gradle 中添加：
         
