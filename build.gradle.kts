@@ -6,7 +6,16 @@ plugins {
 }
 
 group = "io.github.guisulwz"
-version = "1.0.2-750"
+version = "1.0.3-750"
+
+gradlePlugin {
+    plugins {
+        create("myPlugin") {
+            id = "io.github.guisulwz.app-library"         // 插件 ID
+            implementationClass = "com.gui_su.plugin.AppLibraryPlugin" // 插件类
+        }
+    }
+}
 
 publishing {
     publications {
@@ -20,7 +29,7 @@ publishing {
 
             group = "io.github.guisulwz"
             artifactId = "app-library"
-            version = "1.0.2-750"
+            version = "1.0.3-750"
 
             pom {
                 name.set("appLibraryPlugin")
