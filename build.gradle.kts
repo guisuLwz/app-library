@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.guisulwz"
-version = "7.5.0"
+version = "7.5.1"
 
 publishing {
     publications {
@@ -20,7 +20,7 @@ publishing {
 
             group = "io.github.guisulwz"
             artifactId = "app-library"
-            version = "7.5.0"
+            version = "7.5.1"
 
             pom {
                 name.set("appLibraryPlugin")
