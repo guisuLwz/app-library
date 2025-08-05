@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.guisulwz"
-version = "7.5.2"
+version = "1.0.2-750"
 
 publishing {
     publications {
